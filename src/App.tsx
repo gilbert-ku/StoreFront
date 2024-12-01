@@ -1,11 +1,12 @@
 
 import './App.css'
+import NavigationBar from './components/NavBar'
 
 function App() {
 
   return (
     <>
-      <button className=' text-blue-300'> Mtaa Mall</button>
+    <NavigationBar />
     </>
   )
 }

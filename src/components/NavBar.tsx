@@ -1,5 +1,5 @@
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, ShoppingCartIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { NavLink } from "react-router-dom"
 
 
@@ -57,9 +57,12 @@ export default function NavBar() {
               type="button"
               className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
             >
-              <span className="absolute -inset-1.5" />
-              <span className="sr-only">View notifications</span>
-              <BellIcon aria-hidden="true" className="size-6" />
+              {/* <span className="absolute -inset-1.5" /> */}
+              {/* <span className="sr-only">View notifications</span> */}
+              <ShoppingCartIcon aria-hidden="true" className="size-9" />
+              <div className=' absolute bottom-0 right-0 bg-red-600 rounded-full w-5 h-5 text-sm'>
+                17
+              </div>
             </button>
             </NavLink>
           </div>

@@ -1,10 +1,11 @@
 
-import heroImage from "/images/mtaa_mall-removebg-preview.png"
+import Categories from "../components/Categories"
+import heroImage from "/images/Mtaa_mall.png"
 
 function Home() {
   return (
     <>
-      <div className="h-[80%] bg-slate-200 flex justify-center items-center">
+      <div className="h-[75%] flex justify-center items-center">
         <div
           className="w-full max-w-[95%] my-3 md:my-10 rounded-md md:rounded-2xl bg-gradient-to-r from-slate-400 via-purple-400 to-pink-500 shadow-xl overflow-hidden"
           style={{ minHeight: "700px" }}
@@ -44,6 +45,8 @@ function Home() {
           </div>
         </div>
       </div>
+
+      <Categories />
 
     </>
   )

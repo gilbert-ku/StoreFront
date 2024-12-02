@@ -11,8 +11,9 @@ function App() {
 
   return (
     <>
-    <NavigationBar />
+    {/* <NavigationBar /> */}
       <ShoppingCartProvider>
+      <NavigationBar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/About" element={<About />} />

@@ -1,6 +1,7 @@
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react'
 import { Bars3Icon, ShoppingCartIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { NavLink } from "react-router-dom"
+import { useShoppingCart } from '../context/ShoppingCartContext'
 
 
 const navigation = [
@@ -13,6 +14,8 @@ function classNames(...classes: string[]) {
 }
 
 export default function NavBar() {
+
+  const {cartQuantity} = useShoppingCart()
   return (
     <Disclosure as="nav" className="bg-gray-800">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -61,7 +64,7 @@ export default function NavBar() {
               {/* <span className="sr-only">View notifications</span> */}
               <ShoppingCartIcon aria-hidden="true" className="size-9" />
               <div className=' absolute bottom-0 right-0 bg-red-600 rounded-full w-5 h-5 text-sm'>
-                17
+                {cartQuantity}
               </div>
             </button>
             </NavLink>

@@ -11,16 +11,16 @@ function App() {
 
   return (
     <>
-    <ShoppingCartProvider>
-      <NavigationBar />
-    <Routes>
-      <Route path="/" element={<Home />}/>
-      <Route path="/About" element={<About />}/>
-      <Route path="/ShoppingCart" element={<ShoppingCart />}/>
-    </Routes>
-    </ShoppingCartProvider>
-    
-    
+    <NavigationBar />
+      <ShoppingCartProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/About" element={<About />} />
+          <Route path="/ShoppingCart" element={<ShoppingCart />} />
+        </Routes>
+      </ShoppingCartProvider>
+
+
     </>
   )
 }

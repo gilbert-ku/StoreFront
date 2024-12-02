@@ -6,7 +6,7 @@ type Product = {
   image: string;
   price: number;
   rating: {
-    rate: number; 
+    rate: number;
     count: number;
   };
 };
@@ -39,6 +39,8 @@ const ProductsList: React.FC = () => {
     fetchData();
   }, []);
 
+  const quantity = 0  
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
@@ -67,9 +69,7 @@ const ProductsList: React.FC = () => {
               <h2 className="text-lg font-semibold text-gray-800 dark:text-white mb-2 truncate">
                 {product.title}
               </h2>
-              {/* <p className="text-sm mb-4 font-normal text-gray-500 dark:text-gray-400 line-clamp-3">
-                {product.description}
-              </p> */}
+
               <div className="flex justify-between items-center mb-4 text-gray-900 dark:text-gray-100">
                 <p className="text-lg font-bold">${product.price}</p>
                 <div className="flex items-center space-x-1">
@@ -77,9 +77,39 @@ const ProductsList: React.FC = () => {
                   <span>{product.rating.rate}</span>
                 </div>
               </div>
-              <button className="bg-blue-600 text-white w-full py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
-                + Add to Cart
-              </button>
+
+              {/* use condition rendering */}
+              <div className="mt-auto">
+                {
+                  quantity === 0 ? (
+                    <button className="bg-blue-600 text-white w-full py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
+                      + Add to Cart
+                    </button>
+                  ) : (
+                    <div className="flex flex-col items-center justify-center space-y-4">
+                      {/* Quantity Controls */}
+                      <div className="flex items-center space-x-4 py-4 text-black">
+                        <button className="px-5 bg-pink-200 rounded-md hover:bg-purple-300 text-2xl">
+                          -
+                        </button>
+                        <div className="text-center px-4 text-white font-semibold">
+                          <span className="text-xl">{quantity}</span> in Cart
+                        </div>
+                        <button className="px-5 bg-pink-200 rounded-md hover:bg-purple-300 text-2xl">
+                          +
+                        </button>
+                      </div>
+
+                      {/* Remove Button */}
+                      <button className="bg-red-600 text-white w-full py-3 rounded-lg font-medium hover:bg-red-700 transition-colors">
+                        Remove
+                      </button>
+                    </div>
+
+                  )
+                }
+              </div>
+
             </div>
           </div>
         ))}

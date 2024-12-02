@@ -1,7 +1,14 @@
 
 function ShoppingCart() {
   return (
-    <div>ShoppingCart</div>
+    <>
+    <section>
+      <div className="text-black text-6xl">
+        <p>Shopping cart</p>
+        
+      </div>
+    </section>
+    </>
   )
 }
 

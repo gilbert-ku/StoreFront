@@ -1,5 +1,6 @@
 
 import Categories from "../components/Categories"
+import ProductsList from "../components/ProductsList"
 import heroImage from "/images/Mtaa_mall.png"
 
 function Home() {
@@ -47,6 +48,7 @@ function Home() {
       </div>
 
       <Categories />
+      <ProductsList/>
 
     </>
   )

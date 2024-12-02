@@ -26,57 +26,53 @@ export const useShoppingCart = () => {
 
 // provider function
 export function ShoppingCartProvider({ children }: useCartProviderProps) {
-    const [cartItems, setCartItems] = useState<cartItems[]>([])
+  const [cartItems, setCartItems] = useState<cartItems[]>([]);
 
-    const getItemQuantity = () => {
-        return cartItems.find(item => item.id)?.quantity || 0
-    }
+//Function to get the quantity of a specific item in the cart.
 
-    //  add function
-    const increaseCartQuantity = (id: number) => {
-        setCartItems(currentItems => {
-            if (currentItems.find(item => item.id === id) == null) {
-                return [...currentItems, { id, quantity: 1 }]
-            } else {
-                return currentItems.map(item => {
-                    if (item.id === id) {
-                        return { ...item, quantity: item.quantity + 1 }
-                    } else {
-                        return item
-                    }
-                })
-            }
-        })
-    }
+  const getItemQuantity = (id: number) => {
+    return cartItems.find((item) => item.id === id)?.quantity || 0;
+  };
 
-    // decrease quantity function
-    const decreaseCartQuantity = (id: number) => {
-        setCartItems(currentItems => {
-            if (currentItems.find(item => item.id === id)?.quantity === 1) {
-                return currentItems.filter(item => item.id !== id)
-            } else {
-                return currentItems.map(item => {
-                    if (item.id === id) {
-                        return { ...item, quantity: item.quantity - 1 }
-                    } else {
-                        return item
-                    }
-                })
-            }
-        })
-    }
+  const increaseCartQuantity = (id: number) => {
+    setCartItems((currentItems) => {
+      if (!currentItems.some((item) => item.id === id)) {
+        // Item is not in the cart, add it with a quantity of 1
+        return [...currentItems, { id, quantity: 1 }];
+      }
+      // Item is already in the cart, increase its quantity
+      return currentItems.map((item) =>
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+      );
+    });
+  };
 
-    // remove function
+  const decreaseCartQuantity = (id: number) => {
+    setCartItems((currentItems) => {
+      const targetItem = currentItems.find((item) => item.id === id);
+      if (targetItem?.quantity === 1) {
+        return currentItems.filter((item) => item.id !== id);
+      }
+      return currentItems.map((item) =>
+        item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+      );
+    });
+  };
 
-    const removeFromCart = (id: number) => {
-        setCartItems(currentItem => {
-            return currentItem.filter(item => item.id !== id)
-        })
-    }
+  const removeFromCart = (id: number) => {
+    setCartItems((currentItems) => currentItems.filter((item) => item.id !== id));
+  };
 
-    return (
-        <ShoppingCartContext.Provider value={{ getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart }}>
-            {children}
-        </ShoppingCartContext.Provider>
-    )
+  return (
+    <ShoppingCartContext.Provider
+      value={{
+        getItemQuantity,
+        increaseCartQuantity,
+        decreaseCartQuantity,
+        removeFromCart,
+      }}
+    >
+      {children}
+    </ShoppingCartContext.Provider>
+  );
 }

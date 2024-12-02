@@ -58,7 +58,7 @@ const ProductsList: React.FC = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-4">
         {products?.map((product) => {
-          const quantity = getItemQuantity(product.id); // Get quantity for this product only
+          const quantity = getItemQuantity(product.id); 
 
           return (
             <div
@@ -89,7 +89,7 @@ const ProductsList: React.FC = () => {
                 <div className="mt-auto">
                   {quantity === 0 ? (
                     <button
-                      onClick={() => increaseCartQuantity(product.id)} // Update only this product's quantity
+                      onClick={() => increaseCartQuantity(product.id)} 
                       className="bg-blue-600 text-white w-full py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
                     >
                       + Add to Cart
@@ -99,7 +99,7 @@ const ProductsList: React.FC = () => {
                       {/* Quantity Controls */}
                       <div className="flex items-center space-x-4 py-4 text-black">
                         <button
-                          onClick={() => decreaseCartQuantity(product.id)} // Decrease for this product
+                          onClick={() => decreaseCartQuantity(product.id)} 
                           className="px-5 bg-pink-200 rounded-md hover:bg-purple-300 text-2xl"
                         >
                           -
@@ -108,7 +108,7 @@ const ProductsList: React.FC = () => {
                           <span className="text-xl">{quantity}</span> in Cart
                         </div>
                         <button
-                          onClick={() => increaseCartQuantity(product.id)} // Increase for this product
+                          onClick={() => increaseCartQuantity(product.id)} 
                           className="px-5 bg-pink-200 rounded-md hover:bg-purple-300 text-2xl"
                         >
                           +
@@ -117,7 +117,7 @@ const ProductsList: React.FC = () => {
 
                       {/* Remove Button */}
                       <button
-                        onClick={() => removeFromCart(product.id)} // Remove this product
+                        onClick={() => removeFromCart(product.id)} 
                         className="bg-red-600 text-white w-full py-3 rounded-lg font-medium hover:bg-red-700 transition-colors"
                       >
                         Remove

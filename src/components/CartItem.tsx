@@ -1,51 +1,13 @@
 import { useShoppingCart } from "../context/ShoppingCartContext";
-import { useState, useEffect } from "react";
 type CartItemProp = {
   id: number
   quantity: number
 }
 
-type Product = {
-  id: number;
-  title: string;
-  image: string;
-  price: number;
-  rating: {
-    rate: number;
-    count: number;
-  };
-};
 const ShoppingCart = ({ id, quantity }: CartItemProp) => {
-  const [products, setProducts] = useState<Product[] | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
-
+  const {products} = useShoppingCart()
+  
   const { removeFromCart, decreaseCartQuantity, increaseCartQuantity } = useShoppingCart()
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      setError(null);
-
-      try {
-        const response = await fetch("https://fakestoreapi.com/products/");
-        if (!response.ok) {
-          throw new Error(`Error: ${response.status}`);
-        }
-        const data: Product[] = await response.json();
-        setProducts(data);
-      } catch (err: unknown) {
-        setError(err instanceof Error ? err.message : "An unexpected error occurred");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
 
   const product = products?.find(item => item.id === id)
   if (product == null) return null

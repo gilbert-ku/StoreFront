@@ -1,10 +1,11 @@
 import { createContext, useContext, ReactNode, useState, useEffect } from "react";
+import { useLocalStorage } from "../hook/useLocalStorage";
 
 type useCartProviderProps = {
   children: ReactNode
 }
 
-type cartItems = {
+type CartItems = {
   id: number
   quantity: number
 }
@@ -28,7 +29,7 @@ type ShoppingCartContext = {
   decreaseCartQuantity: (id: number) => void
   removeFromCart: (id: number) => void
   cartQuantity: number
-  cartItems: cartItems[]
+  cartItems: CartItems[]
   products: Product[];
 }
 
@@ -42,10 +43,16 @@ export const useShoppingCart = () => {
 
 // provider function
 export function ShoppingCartProvider({ children }: useCartProviderProps) {
-  const [cartItems, setCartItems] = useState<cartItems[]>([]);
+  // const [cartItems, setCartItems] = useState<cartItems[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+
+  // store the cart items in local storage 
+  const [cartItems, setCartItems] = useLocalStorage<CartItems[]>(
+    "shopping-cart",
+    []
+  )
 
 
   // function to fetch products

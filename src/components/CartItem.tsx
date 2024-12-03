@@ -51,7 +51,7 @@ const ShoppingCart = ({ id, quantity }: CartItemProp) => {
   if (product == null) return null
   return (
     <>
-      <div className=" shadow-lg w-full md:w-3/4 my-5 rounded-3xl">
+      <div className=" shadow-lg w-full border my-5 rounded-2xl">
         <div className="flex justify-between">
           <div className="w-1/2 flex">
             <img

@@ -5,7 +5,7 @@ function Categories() {
     return (
         <>
             <div className="container mx-auto md:flex justify-between mb-8">
-                <p className=" mx-3 font-sans font-bold text-4xl">
+                <p className=" mx-3 font-sans font-bold  text-2xl md:text-4xl my-3 md:2">
                     Shop By Category
                 </p>
                 <div className="grid gris-cols-1 md:grid-cols-2 gap-4 md:w-1/2 mx-4">

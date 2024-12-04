@@ -28,7 +28,8 @@ const ProductsList: React.FC = () => {
                   <img
                     src={product.image}
                     alt={product.title}
-                    className="h-full w-full object-scale-down rounded-t-lg p-3"
+                    className=" placeholder-gray-200 h-full w-full object-scale-down rounded-t-lg p-3"
+                    loading="lazy"
                   />
                 </div>
                 <div className="p-6">

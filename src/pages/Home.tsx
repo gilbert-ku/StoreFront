@@ -13,7 +13,7 @@ function Home() {
         >
           <div className="md:flex justify-between items-center text-center md:text-left">
             {/* Main Content */}
-            <div className="p-8 md:p-20 flex flex-col justify-center">
+            <div className="p-8 md:p-20 flex flex-col justify-center items-center md:items-start">
               <h1 className="text-white font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold leading-snug md:leading-tight">
                 Your One <br />
                 <span className="block md:inline text-pink-300">Stop Shop</span>
@@ -30,7 +30,7 @@ function Home() {
 
             {/* Hero Image */}
             <div className="relative w-full md:w-1/2 flex justify-center items-center p-4">
-              <div className="relative">
+              <div className="relative flex justify-center items-center">
                 <img
                   src={heroImage}
                   alt="A visual representation of simplicity and style"
@@ -38,7 +38,7 @@ function Home() {
                   loading="lazy"
                 />
                 {/* Floating Text */}
-                <div className="absolute bottom-4 right-4 sm:right-6 text-white font-bold text-2xl sm:text-4xl md:text-5xl lg:text-6xl italic opacity-90">
+                <div className="absolute bottom-4 right-4 sm:right-6 text-white font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl italic opacity-90">
                   Simple IS More
                 </div>
               </div>

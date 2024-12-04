@@ -15,7 +15,7 @@ type CartItems = {
 }
 
 
-type Product = {
+export type Product = {
   id: number;
   title: string;
   image: string;
@@ -36,7 +36,11 @@ type ShoppingCartContext = {
   removeFromCart: (id: number) => void
   cartQuantity: number
   cartItems: CartItems[]
-  products: Product[];
+  products: Product[]
+  filteredProducts: Product[];
+  categories: string[];
+  selectedCategory: string;
+  setCategory: (category: string) => void;
 }
 
 // shopping context
@@ -53,6 +57,8 @@ export function ShoppingCartProvider({ children }: useCartProviderProps) {
   const [products, setProducts] = useState<Product[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+
 
   // store the cart items in local storage 
   const [cartItems, setCartItems] = useLocalStorage<CartItems[]>(
@@ -111,40 +117,40 @@ export function ShoppingCartProvider({ children }: useCartProviderProps) {
   if (error) {
     // return <p>Error: {error}</p>;
     return <div className="flex justify-center items-center w-full h-screen">
-    <div className="text-center">
-      <img 
-        src={errorImg} 
-        alt="Error image" 
-        className="h-1/4 w-96 mx-auto" 
-      />
-      <p className="font-semibold mt-4">
-        Oops! Something went wrong while loading the data. Please try reloading
-        the page or check your internet connection.
-      </p>
-  
-      <button 
-        className="my-8 flex justify-center items-center mx-auto bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-300" 
-        onClick={handleReload}
-      >
-        <svg 
-          className="w-6 h-6" 
-          xmlns="http://www.w3.org/2000/svg" 
-          fill="none" 
-          viewBox="0 0 24 24" 
-          strokeWidth={1.5} 
-          stroke="currentColor"
+      <div className="text-center">
+        <img
+          src={errorImg}
+          alt="Error image"
+          className="h-1/4 w-96 mx-auto"
+        />
+        <p className="font-semibold mt-4">
+          Oops! Something went wrong while loading the data. Please try reloading
+          the page or check your internet connection.
+        </p>
+
+        <button
+          className="my-8 flex justify-center items-center mx-auto bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-300"
+          onClick={handleReload}
         >
-          <path 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
-            d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" 
-          />
-        </svg>
-        <span className="ml-2">Reload</span> 
-      </button>
+          <svg
+            className="w-6 h-6"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
+            />
+          </svg>
+          <span className="ml-2">Reload</span>
+        </button>
+      </div>
     </div>
-  </div>
-  
+
   }
 
   // function to calculate number of item in the cart
@@ -162,7 +168,7 @@ export function ShoppingCartProvider({ children }: useCartProviderProps) {
   const increaseCartQuantity = (id: number) => {
     setCartItems((currentItems) => {
       if (!currentItems.some((item) => item.id === id)) {
-        // Item is not in the cart, add it with a quantity of 1
+        // check if Item is not in the cart, add it with a quantity of 1
         return [...currentItems, { id, quantity: 1 }];
       }
       // Item is already in the cart, increase its quantity
@@ -188,6 +194,17 @@ export function ShoppingCartProvider({ children }: useCartProviderProps) {
     setCartItems((currentItems) => currentItems.filter((item) => item.id !== id));
   };
 
+  // Filtered Products
+  const filteredProducts = selectedCategory === "See All"
+    ? products
+    : products.filter((product) => product.category === selectedCategory);
+
+  // Categories List
+  const categories = [" See All", ...new Set(products.map((product) => product.category))];
+
+  // Set Category Function
+  const setCategory = (category: string) => setSelectedCategory(category);
+
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -197,7 +214,11 @@ export function ShoppingCartProvider({ children }: useCartProviderProps) {
         removeFromCart,
         cartItems,
         cartQuantity,
-        products
+        products,
+        filteredProducts,
+        categories,
+        setCategory,
+        selectedCategory,
       }}
     >
       {children}

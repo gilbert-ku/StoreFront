@@ -5,6 +5,7 @@ import Home from "./pages/Home"
 import ShoppingCart from "./pages/ShoppingCart"
 import About from "./pages/About"
 import { ShoppingCartProvider } from "./context/ShoppingCartContext"
+import ProductDetails from "./components/ProductDetails"
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/About" element={<About />} />
+          <Route path="/product/:id" element={<ProductDetails/>} />
           <Route path="/ShoppingCart" element={<ShoppingCart />} />
         </Routes>
       </ShoppingCartProvider>

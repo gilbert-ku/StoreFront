@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 
 const ProductsList: React.FC = () => {
@@ -17,11 +18,14 @@ const ProductsList: React.FC = () => {
         <p>See all</p>
       </div>
 
+      
+      {/* </Link> */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-4">
         {products?.map((product) => {
           const quantity = getItemQuantity(product.id); 
 
           return (
+            <Link to={`/product/${product.id}`}>
             <div
               key={product.id}
               className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 transition-transform transform hover:scale-105"
@@ -88,6 +92,9 @@ const ProductsList: React.FC = () => {
                 </div>
               </div>
             </div>
+
+            </Link>
+
           );
         })}
       </div>

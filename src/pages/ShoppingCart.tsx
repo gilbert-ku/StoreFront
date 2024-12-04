@@ -12,16 +12,17 @@ const ShoppingCart = () => {
 
   return (
     <section className="container mx-auto">
+
       <p className="text-center mt-5 font-bold text-2xl">My Cart</p>
 
-      <div className="flex">
-        <div className=" w-3/4">
+      <div className="lg:flex  w-full">
+        <div className="lg:w-3/4">
           {cartItems.map(item => (
             <CartItem key={item.id} {...item} />
           ))}
         </div>
 
-        <div className="w-1/4 border mx-2 mt-5 rounded-2xl h-64 shadow-lg bg-white">
+        <div className="lg:w-1/4 border mx-2 mt-5 rounded-2xl md:h-64 lg:h-72 shadow-lg bg-white pb-3 md:pb-0">
           <p className="font-semibold text-lg my-4 text-center text-gray-800 tracking-wide">
             CART SUMMARY
           </p>

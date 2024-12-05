@@ -29,7 +29,7 @@ const ShoppingCart = () => {
           <hr className="border-t border-gray-200" />
           <div className="flex justify-between px-4 py-3 border-b">
             <p className="text-gray-600">Subtotal</p>
-            <p className="font-semibold text-gray-900">KSH {totalPrice.toFixed(2)}</p>
+            <p className="font-semibold text-gray-900">$ {totalPrice.toFixed(2)}</p>
           </div>
           <div className="px-4 py-4">
             <p className="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-medium text-sm">

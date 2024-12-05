@@ -5,7 +5,7 @@ const Footer = () => {
           {/* Branding Section */}
           <div className="space-y-4">
             <p className="font-mono font-extrabold text-4xl text-center md:text-start">
-              Mtall Mall
+                Storefront
             </p>
             <p className="text-gray-600">
               Your one-stop shop for quality products. Explore a variety of items and enjoy seamless shopping.
@@ -64,7 +64,7 @@ const Footer = () => {
   
         {/* Footer Bottom */}
         <div className="mt-12 text-center text-gray-500 text-sm">
-          &copy; {new Date().getFullYear()} Mtall Mall. All Rights Reserved.
+          &copy; {new Date().getFullYear()} Storefront. All Rights Reserved.
         </div>
       </footer>
     );

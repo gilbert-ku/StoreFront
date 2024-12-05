@@ -28,7 +28,7 @@ const ProductDetails = () => {
         <>
             <section className="container mx-auto">
                 <div className=" p-6 my-8 shadow-lg border mx-2 md:mx-0">
-                    <div className=" lg:flex lg:flex-row gap-6 ">
+                    <div className=" lg:flex lg:flex-row gap-6 mx-10">
                         {/* Product Image */}
                         <div className="h-auto p-3  md:h-[25rem] bg-white w-full md:w-full lg:w-1/2 ">
                             <img

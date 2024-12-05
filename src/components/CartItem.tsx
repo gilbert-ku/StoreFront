@@ -13,16 +13,17 @@ const ShoppingCart = ({ id, quantity }: CartItemProp) => {
   if (product == null) return null
   return (
     <>
-      <div className=" shadow-lg w-full border my-5 rounded-2xl">
+    <section className="">
+      <div className=" shadow-lg border my-5 rounded-2xl mx-2">
         {/* image and title */}
         <div className="md:flex justify-between">
-          <div className="md:w-1/2 md:flex justify-center items-center">
+          <div className=" md:flex justify-center items-center">
             {/* image */}
             <div className=" flex justify-center items-center">
               <img
                 src={product.image}
                 alt={product.title}
-                className="object-cover object-center h-48 md:h-28 p-3 rounded-lg"
+                className="object-scale-down w-40 h-48 md:h-28 p-3 rounded-lg"
               />
             </div>
 
@@ -30,7 +31,7 @@ const ShoppingCart = ({ id, quantity }: CartItemProp) => {
               <p className="py-2 mt-3 font-semibold text-lg">{product.title}</p>
               <div className="flex justify-between items-center mt-4 text-gray-900">
                 <div>
-                  Ksh {product.price}
+                  $ {product.price}
                   {quantity > 1 && (
                     <span className="mx-1 text-gray-600 text-sm">x{quantity}</span>
                   )}
@@ -44,7 +45,7 @@ const ShoppingCart = ({ id, quantity }: CartItemProp) => {
             </div>
           </div>
           <div className="flex items-center justify-end">
-            <p className="text-2xl font-bold p-9"> <span className="font-thin text-lg me-6"> Subtotal</span> KSh {product.price * quantity}</p>
+            <p className="text-2xl font-bold p-9"> <span className="font-thin text-lg me-6"> Subtotal</span> $ {product.price * quantity}</p>
           </div>
         </div>
 
@@ -85,6 +86,8 @@ const ShoppingCart = ({ id, quantity }: CartItemProp) => {
           </div>
         </div>
       </div>
+    </section>
+      
 
     </>
   );

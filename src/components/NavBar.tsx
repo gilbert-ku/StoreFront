@@ -15,11 +15,11 @@ function classNames(...classes: string[]) {
 
 export default function NavBar() {
 
-  const {cartQuantity} = useShoppingCart()
+  const { cartQuantity } = useShoppingCart()
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="bg-gray-800 top-0 w-full ">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-        <div className="relative flex h-16 items-center justify-between">
+        <div className="relative flex h-14 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             {/* Mobile menu button*/}
             <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
@@ -32,7 +32,7 @@ export default function NavBar() {
 
           {/* Logo Section */}
           <div className="flex flex-1 items-center justify-center sm:items-start sm:justify-start">
-            <div className="flex-shrink-0 text-white text-xl font-semibold">Mtaa Mall</div>
+            <div className="flex-shrink-0 text-white text-xl font-semibold">Storefront</div>
           </div>
 
           <div className="hidden sm:ml-6 sm:block">
@@ -57,16 +57,16 @@ export default function NavBar() {
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <NavLink to="ShoppingCart" >
               <button
-              type="button"
-              className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-            >
-              {/* <span className="absolute -inset-1.5" /> */}
-              {/* <span className="sr-only">View notifications</span> */}
-              <ShoppingCartIcon aria-hidden="true" className="size-9" />
-              <div className=' absolute bottom-0 right-0 bg-red-600 rounded-full w-5 h-5 text-sm'>
-                {cartQuantity}
-              </div>
-            </button>
+                type="button"
+                className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+              >
+                {/* <span className="absolute -inset-1.5" /> */}
+                {/* <span className="sr-only">View notifications</span> */}
+                <ShoppingCartIcon aria-hidden="true" className="size-9" />
+                <div className=' absolute bottom-0 right-0 bg-red-600 rounded-full w-5 h-5 text-sm'>
+                  {cartQuantity}
+                </div>
+              </button>
             </NavLink>
           </div>
         </div>

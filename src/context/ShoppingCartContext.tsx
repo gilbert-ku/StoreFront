@@ -53,7 +53,6 @@ export const useShoppingCart = () => {
 
 // provider function
 export function ShoppingCartProvider({ children }: useCartProviderProps) {
-  // const [cartItems, setCartItems] = useState<cartItems[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -103,7 +102,6 @@ export function ShoppingCartProvider({ children }: useCartProviderProps) {
   )
 
   //Function to get the quantity of a specific item in the cart.
-
   const getItemQuantity = (id: number) => {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
   };

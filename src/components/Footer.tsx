@@ -5,7 +5,7 @@ const Footer = () => {
           {/* Branding Section */}
           <div className="space-y-4">
             <p className="font-mono font-extrabold text-4xl text-center md:text-start">
-                Storefront
+              Storefront
             </p>
             <p className="text-gray-600">
               Your one-stop shop for quality products. Explore a variety of items and enjoy seamless shopping.

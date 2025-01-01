@@ -36,7 +36,7 @@ const ShoppingCart = () => {
               Mtaa Mall Express
             </p>
             <p className="text-gray-700 text-sm mt-2">
-              We deliver! Items are eligible for free delivery.
+              We deliver! Items that are eligible for free delivery.
             </p>
           </div>
           <button className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-semibold py-3 w-11/12 mx-auto block rounded-full shadow-md hover:shadow-lg transition-shadow duration-300 transform hover:-translate-y-1">
